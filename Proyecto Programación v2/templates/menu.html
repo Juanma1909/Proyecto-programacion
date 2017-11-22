@@ -9,17 +9,20 @@
 	<div>
 		<input type="text" name="agregar" placeholder="Escriba el usuario a agregar">
 		<br>
-		<input type="submit" name="buscar" value ="buscar">
+		<input type="submit" name="buscar" value ="Buscar">
 		<br>
 		<p>{{error}}</p>
 		<div class ="solicitudes">			
 			<h5> Solicitudes Pendientes</h5>
-			<form>
+			<form action="" method="post">
 				{% for solp in solicitudes %}
-				
-			</form>
-				}
-			
+					{% if solp != "" %}
+						<font color="black" face="Verdana" size="5px" id="s">{{solp}}</font>
+						<input type="submit" name="{{solp}}" value="aceptar" id ="aceptar">
+						<input type="submit" name="{{solp}}" value="rechazar" id ="rechazar">
+					{% endif %}
+				{% endfor %}
+			</form>					
 
 		</div>
 	</div>

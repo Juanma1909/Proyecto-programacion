@@ -12,7 +12,7 @@
 		<center>
 			<header>
 				<div>
-					<img class = "logo" alt = "logo" src= "logo.png">
+					<img class = "logo" alt = "logo" src= "static/logo.PNG">
 				</div>
 				<div>
 					<nav>
@@ -21,13 +21,7 @@
 						</ul>
 					</nav>
 				</div>
-			</header>
-			<section class="wrapper">
-				<section class="main">
-				</section>
-				<!--<aside>para lo de al lado-->
-				<!--</aside>-->
-			</section>
+			</header>			
 			<form>		 
 				<label for = "username">Ingrese su Usuario</label>
 				<br>
@@ -42,10 +36,10 @@
 				<br>
 				<input type="text" placeholder="Escriba el lugar desde donde se conecta" name="ubicacion">
 				<br>
-				<input type="submit" value = "Login" name="Login">
+				<input type="submit" value = "login" name="Login">
 				<br>
 				<br>
-				<p>{{error}}</p>
+				<p class="error">{{error}}</p>
 				<!--<input type="submit" value="Register" name="Regist">-->
 			</form>
 		</center>

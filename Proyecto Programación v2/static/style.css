@@ -26,4 +26,10 @@ a:active{
 
 .solicitudes{
 	background: #ccc;
+	
 }
+.error{
+	color: "red";
+	font-size: 15px ;
+}
+

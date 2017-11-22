@@ -7,8 +7,8 @@ app = Flask(__name__)#obejto
 app.config.from_envvar('FLASKR_SETTINGS', silent=True)
 app.config['DEBUG'] = True
 
-usuarios={"Admin":"juanmanuel"}
-pre =["Admin","juanmanuel"]
+usuarios={}
+pre =[]
 f=open("Usuarios.txt","r")
 todo = f.readlines()
 f.close
@@ -19,21 +19,22 @@ while i < len(pre):
 	usuarios[str(pre[i])] = str(pre[i+1])
 	i = i + 2
 
-
-@app.route('/', methods = ['GET', 'POST'])#decorador
+@app.route('/', methods=['GET', 'POST'])
 def login():
 	"""
 	entrada: username y password
 	descripcion: dado un username y una contraseña, verifica que estos esten en el sistema (se hayan registrado) y coincidan, dado el caso los nvía al menu principal, de lo contrario muestra un error
 	salida: redireccionar al menu princial
 	"""
-	global usuarios
-	error = ""	
+	global usuarios	
+	error = ""
 	if request.method == 'POST':
-		if request.form["Login"] == "Login":						
-			if request.form["username"] != "" and request.form["pswd"] != "" and request.form["username"] in usuarios:								
-				if usuarios.get(str(request.form["username"])) == request.form["pswd"]:
+		if request.form["Login"] == "login":
+			#iniciar sesion
+			if request.form["username"] != "" and request.form["pswd"] != "" and request.form["username"] in usuarios:
+				if usuarios.get(str(request.form["username"])) == str(request.form["pswd"]):
 					session['usr'] = str(request.form["username"])
+					Nombre = session['usr']
 					return redirect(url_for('Chat_Menu', Nombre = Nombre))
 				else:
 					error = "Nombre de Usuario o contrasena incorrectos"
@@ -57,7 +58,8 @@ def registrar():
 	global usuarios
 	error = ""	
 	if request.method == 'POST':
-		if request.form["Regist"] == "Regist":
+		#registrarse
+		if request.form["Regist"] == "Register":
 			if request.form["usernamer"] != "" and request.form["pswdr"] != "" and request.form["confirm"] != "" and request.form["confirm"]==request.form["pswdr"]:
 				for persona in usuarios:
 					if request.form["usernamer"] == str(persona):
@@ -65,9 +67,9 @@ def registrar():
 						return render_template("register.html", error = error)
 					else:						
 						usuarios[str(request.form["usernamer"])]=str(request.form["pswdr"])						
-						f = open(str("Contactos/"+request.form["usernamer"]),"w")
+						f = open("Contactos/"+str(request.form["usernamer"]),"w")
 						f.close
-						h = open("Solicitudes/"+(request.form["usernamer"]),"w")
+						h = open("Solicitudes/"+str(request.form["usernamer"]),"w")
 						h.close
 						i = open("Usuarios.txt","a")
 						i.write(":"+request.form["usernamer"]+":"+request.form["pswdr"])
@@ -85,20 +87,22 @@ def registrar():
 
 @app.route('/menu', methods=['GET','POST'])
 def Chat_Menu():
-	global usuarios
-	i = open("Solicitudes/","r")
+	"""
+	descripción: muestra las solicitudes pendiestes del usuario.
+	"""
+	global usuarios 
+	i = open("Solicitudes/"+str(session['usr']),"r")
+	pre = []
 	pre=i.readlines()
 	i.close
 	solicitudes = []
-	for solicitud in pre
-	solicitudes = solicitudes + solicitud.split("/")
-
-
+	for solicitud in pre:
+		solicitudes = solicitudes + solicitud.split("/")
 	error=""
 	if request.method == 'POST':
-		if request.form["buscar"] == "buscar":
+		if request.form["buscar"] == "Buscar":
 			if str(request.form["agregar"]) in usuarios and str(request.form["agregar"])!="":
-				if str(request.form["agregar"]) == str()#persona ponectada:
+				if str(request.form["agregar"]) == session['usr']:
 					error = "NO te puedes agregar a ti mismo"
 					return render_template('menu.html', error = error)
 				else:
