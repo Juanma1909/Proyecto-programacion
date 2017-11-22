@@ -1,0 +1,49 @@
+<html>
+	<head>
+		<title>FUSE Instant Messages</title>
+		<link rel="stylesheet" type="text/css" href="static/style.css"><!--CSS/estilos.css-->
+	</head>
+
+	<body>
+		<h1>FUSE Instant Messages</h1>		
+		<!--esto es un comentario-->
+		<center>
+			<header>
+				<div>
+					<img class = "logo" alt = "logo" src= "logo.png">
+				</div>
+				<div>
+					<nav>
+						<ul>
+							<a class = "login" href="http://127.0.0.1:5000/">Login</a><a class = "Register" href="http://127.0.0.1:5000/register">Register</a>													
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<section class="wrapper">
+				<section class="main">
+				</section>
+				<!--<aside>para lo de al lado-->
+				<!--</aside>-->
+			</section>
+			<form>		 
+				<label for = "usernamer">Ingrese su nuevo Usuario</label>
+				<br>
+				<input type="text" placeholder="Escribe tu usuario" name="usernamer">
+				<br>
+				<br>				
+				<label for = "pswdr">Ingrese su nueva contrasena</label>
+				<br>
+				<input type="password" placeholder="Digite su contrasena" name="pswdr">
+				<br>
+				<br>
+				<label for="confirm"> Confirme su contrasena</label>
+				<br>
+				<input type="password" placeholder="Confirme su contrasena" name="confirm">
+				<br>				
+				<br>
+				<input type="submit" value="Register" name="Regist">
+				<p class = "error"> {{error}}</p>
+			</form>
+	</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Inicio</title>
+	<link rel="stylesheet" type="text/css" href="static/style.css">
+</head>
+<body>	
+	<h1> Bienvenido {{Nombre}}</h1>
+	<div>
+		<input type="text" name="agregar" placeholder="Escriba el usuario a agregar">
+		<br>
+		<input type="submit" name="buscar" value ="buscar">
+		<br>
+		<p>{{error}}</p>
+		<div class ="solicitudes">			
+			<h5> Solicitudes Pendientes</h5>
+			<form>
+				{% for solp in solicitudes %}
+				
+			</form>
+				}
+			
+
+		</div>
+	</div>
+
+</body>
+</html>

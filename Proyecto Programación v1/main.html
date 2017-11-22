@@ -2,22 +2,22 @@
 	<head>
 		<title> FUSE Instant Messages </title>		
 		<!--<link rel="shortcut icon" type="image/x-icon" href="">-->
-		<link rel="stylesheet" type="text/css" href="CSS/estilos.css">
+		<link rel="stylesheet" type="text/css" href="static/style.css">
 	</head>
 	
 
 	<body>
-		<h1>FUSE Instant Messages</h1>		
+		<h1 calss = "h1">FUSE Instant Messages</h1>		
 		<!--esto es un comentario-->
 		<center>
 			<header>
 				<div>
-					<img class = "logo" alt = "logo" src= logo.png>
+					<img class = "logo" alt = "logo" src= "logo.png">
 				</div>
 				<div>
 					<nav>
 						<ul>
-							<a class = "login" href="#">Login</a><a class = "Register" href="#">Register</a>													
+							<a class = "login" href="http://127.0.0.1:5000/">Login</a><a class = "Register" href="http://127.0.0.1:5000/register">Register</a>													
 						</ul>
 					</nav>
 				</div>
@@ -38,8 +38,14 @@
 				<br>
 				<input type="password" placeholder="Digite su contrasena" name="pswd">
 				<br>
+				<label for = "ubicacion" > Ubicacion</label>
+				<br>
+				<input type="text" placeholder="Escriba el lugar desde donde se conecta" name="ubicacion">
+				<br>
 				<input type="submit" value = "Login" name="Login">
 				<br>
+				<br>
+				<p>{{error}}</p>
 				<!--<input type="submit" value="Register" name="Regist">-->
 			</form>
 		</center>
